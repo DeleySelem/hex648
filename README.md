@@ -8,6 +8,6 @@
 
 ## Installation
 ```bash
-git clone https://github.com/yourrepo/hex648.git
+git clone https://github.com/DeleySelem/hex648.git
 cd hex648
 sudo ./install.sh
