@@ -1,5 +1,4 @@
-# hex648
-Multirole I-ching hexagram combat encoder/decoder with unique hashing functionality and bash and python running encoded files protected with a passphrase.
+# Hex648 - I Ching Encoder with Execution
 
 ## Features
 - File encoding/decoding using hexagrams
