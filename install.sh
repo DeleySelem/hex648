@@ -1,46 +1,57 @@
 #!/bin/bash
 
-sudo bash setup_hex64.sh
 # Exit immediately if a command exits with a non-zero status
 set -e
 
-# Check if the script is run with superuser (root) privileges
+# Ensure the script is run with superuser (root) privileges
 if [ "$EUID" -ne 0 ]; then
   echo "Please run this script as root (use sudo)"
   exit 1
 fi
 
 # Define variables
-PROGRAM_NAME="hex648.py"  # Replace with your Python program file name
-INSTALL_PATH="/usr/bin" # Preferred location for user-installed executables
-COMMAND_NAME="hex64"     # Name of the command to execute the program
+PROGRAM_NAME="hex648.py"
+ASSEMBLY_FILE="hex64hash.c"
+SHARED_LIB="hex64hash.so"
+BIN_PATH="/usr/bin"
+LIB_PATH="/usr/lib"
+CONF_PATH="/etc/ld.so.conf.d/hex64.conf"
+COMMAND_NAME="hex64"
 
-# Check for the program file in the current directory
+# Check for necessary files
 if [ ! -f "$PROGRAM_NAME" ]; then
   echo "Error: $PROGRAM_NAME not found in the current directory."
   exit 1
 fi
 
-# Copy the program to the system-wide directory
-echo "Copying $PROGRAM_NAME to $INSTALL_PATH/$COMMAND_NAME..."
-cp "$PROGRAM_NAME" "$INSTALL_PATH/$COMMAND_NAME"
-
-# Make the program executable
-echo "Making $INSTALL_PATH/$COMMAND_NAME executable..."
-chmod +x "$INSTALL_PATH/$COMMAND_NAME"
-
-# Check if the program has a valid shebang (e.g., #!/usr/bin/env python3)
-# If not, prepend the shebang to the file
-if ! head -n 1 "$INSTALL_PATH/$COMMAND_NAME" | grep -q "^#!"; then
-  echo "Adding shebang to $INSTALL_PATH/$COMMAND_NAME..."
-  sed -i '1i#!/usr/bin/env python3' "$INSTALL_PATH/$COMMAND_NAME"
-fi
-
-# Verify installation
-if command -v "$COMMAND_NAME" >/dev/null 2>&1; then
-  echo "Installation complete! You can now run the program using the command: $COMMAND_NAME"
-else
-  echo "Error: The program was not installed successfully."
+if [ ! -f "$ASSEMBLY_FILE" ]; then
+  echo "Error: $ASSEMBLY_FILE not found in the current directory."
   exit 1
 fi
-source env/bin/activate
+
+# Compile the shared library
+echo "Compiling $ASSEMBLY_FILE into a shared library..."
+gcc -shared -o "$LIB_PATH/$SHARED_LIB" -fPIC "$ASSEMBLY_FILE"
+if [[ $? -ne 0 ]]; then
+  echo "Error: Failed to compile the shared library."
+  exit 1
+fi
+echo "Shared library created: $LIB_PATH/$SHARED_LIB"
+
+# Ensure the shared library can be found by the system
+echo "Linking shared library to $CONF_PATH..."
+echo "$LIB_PATH" > "$CONF_PATH"
+ldconfig
+
+# Install the Python script as a system-wide command
+echo "Installing $PROGRAM_NAME as $COMMAND_NAME..."
+cp "$PROGRAM_NAME" "$BIN_PATH/$COMMAND_NAME"
+chmod +x "$BIN_PATH/$COMMAND_NAME"
+
+# Add a shebang to the Python script if not present
+if ! head -n 1 "$BIN_PATH/$COMMAND_NAME" | grep -q "^#!"; then
+  echo "Adding shebang to $BIN_PATH/$COMMAND_NAME..."
+  sed -i '1i#!/usr/bin/env python3' "$BIN_PATH/$COMMAND_NAME"
+fi
+
+echo "Installation complete! You can now run the program using the command: $COMMAND_NAME"
