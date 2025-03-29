@@ -1,13 +1,29 @@
-# hex648
-Multirole I-ching hexagram combat encoder/decoder with unique hashing functionality and bash and python running encoded files protected with a passphrase.
+
+# hex648 v1.0.2
+☰☱☲☳☵☶☴☷
+Multirole I-ching hexagram combat encoder/decoder
+ - Unique hashing
+ - Running encoded files from memory
+
+䷘ ䷱ ䷋ ䷣ ䷀ ䷮ ䷌ ䷠ ䷪
 
 ## Features
 - File encoding/decoding using hexagrams
-- In-memory script execution
+- In-memory script execution (for python and bash)
 - Passphrase protection
+- Iterable encoding
 - Cross-platform support
 
 ## Installation
-git clone https://github.com/yourrepo/hex648.git
-cd hex648
-sudo ./install.sh
+git clone https://github.com/DeleySelem/hex648.git
+
+䷕䷆䷡䷩䷜䷲䷁䷥䷛䷦䷍䷯䷙䷆䷕䷲䷚䷗䷌䷠䷙䷖䷅䷳䷚䷖䷱䷺䷈䷆䷵䷯䷙䷆䷥䷦䷚䷖䷅䷢
+䷛䷆䷔䷊䷚䷖䷺䷴䷛䷲䷁䷡䷈䷇䷑䷯䷛䷶䷰䷠䷛䷶䷘䷠䷘䷸䷥䷢䷙䷗䷈䷠䷘䷸䷉䷩䷛䷖䷔䷮
+䷈䷅䷕䷳䷙䷒䷀䷊䷚䷗䷐䷠䷝䷶䷥䷣䷙䷖䷱䷺䷋䷂䷁䷴䷚䷆䷥䷳䷈䷇䷝䷩䷛䷆䷰䷠䷘䷦䷔䷠
+䷘䷒䷁䷰䷘䷗䷉䷴䷈䷆䷽䷊䷙䷢䷁䷴䷚䷆䷔䷠䷙䷸䷉䷥䷘䷗䷐䷠䷛䷖䷥䷮䷙䷂䷁䷯䷙䷢䷁䷁
+䷛䷆䷕䷹䷘䷖䷺䷤䷜䷦䷥䷡䷛䷢䷴䷊䷚䷓䷘䷠䷝䷶䷡䷩䷘䷶䷠䷠䷚䷗䷌䷠䷘䷖䷹䷠䷘䷗䷉䷴
+䷚䷖䷙䷩䷘䷶䷥䷡䷛䷂䷁䷩䷛䷧䷑䷥䷛䷂䷴䷊䷛䷆䷥䷧䷙䷖䷺䷣䷙䷒䷁䷴䷚䷆䷅䷴䷈䷆䷅䷬
+䷜䷦䷕䷡䷙䷇䷤䷠䷝䷖䷺䷤䷙䷗䷉䷳䷝䷆䷅䷮䷙䷇䷌䷊䷘䷒䷁䷰䷘䷗䷉䷴䷈䷆䷾䷦䷈䷆䷥䷴
+䷉䷸䷌䷠䷛䷸䷝䷮䷈䷆䷍䷯䷙䷆䷔䷠䷝䷶䷥䷴䷚䷆䷾䷵䷝䷂䷀䷊䷚䷗䷐䷠䷝䷆䷽䷠䷘䷦䷔䷠
+䷝䷆䷅䷵䷙䷶䷡䷴䷈䷇䷑䷯䷈䷆䷥䷴䷋䷠䷨䷊䷖䷖䷾䷵䷜䷧䷌䷠䷚䷖䷹䷠䷛䷗䷕䷲䷙䷆䷕䷲
+䷈䷄䷐䷊ 
