@@ -44,7 +44,7 @@
 ## ⚙️ Usage
 
 ### **Encode a File**
-```bash
+
 ./hex648.py -f secret.txt -p "Tao&42!" -x 100 -v
 
     -p: Passphrase (required for encryption).
@@ -54,14 +54,10 @@
     -v: Show binary/trigram steps.
 
 Decode a File
-bash
-Copy
 
 ./hex648.py -d hexed_secret.txt -p "Tao&42!" -x 100
 
 Run Encrypted Scripts
-bash
-Copy
 
 # Execute encoded Python/Bash directly from memory
 ./hex648.py -rp encoded_script.py -p "Tao&42!"
@@ -87,8 +83,6 @@ Best Practices
     Clone the repository.
 
     Compile dependencies:
-    bash
-    Copy
 
     chmod +x install.sh && ./install.sh  # Builds hex64hash library
 
@@ -101,11 +95,3 @@ MIT License. Use responsibly.
     "What is well encrypted cannot be stolen."
     — Adaptation from the I Ching, Hexagram 26 (䷘)
 
-Copy
-
-
-This README balances technical detail with accessibility, emphasizing security through:  
-1. **Brute-force time estimates** to showcase strength.  
-2. **Component breakdown** for transparency.  
-3. **Actionable best practices** for users.  
-4. **Philosophical branding** tying I Ching to modern crypto.
