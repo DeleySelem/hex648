@@ -5,9 +5,9 @@ import subprocess
 
 # Load the shared library
 if os.name == 'nt':  # Windows
-    hex64hash_lib = ctypes.CDLL('./hex64hash.dll')
+    hex64hash_lib = ctypes.CDLL('hex64hash.dll')
 else:  # Linux/Mac
-    hex64hash_lib = ctypes.CDLL('./hex64hash.so')
+    hex64hash_lib = ctypes.CDLL('/usr/lib/hex64hash.so')  # Use the system-wide path
 
 # Define the function signature for Hex64Hash
 hex64hash_lib.Hex64Hash.argtypes = [ctypes.POINTER(ctypes.c_uint32)]
@@ -119,7 +119,7 @@ def run_in_memory(content, language):
         exec(content, globals())
 
 def main():
-    parser = argparse.ArgumentParser(description='I Ching Hexagram Encoder/Decoder')
+    parser = argparse.ArgumentParser(description='Multirole I Ching Hexagram Combat Encoder/Decoder')
     parser.add_argument('-f', '--file', type=str, help='File to encode')
     parser.add_argument('-d', '--decode', type=str, help='File to decode')
     parser.add_argument('-p', '--passphrase', type=str, help='Encryption passphrase')
